@@ -50,7 +50,7 @@ export const ColorMenuSeleciton = ({
         </div>
        </> 
        } 
-
+        {console.log('productCode in colorMenu js', productCode)}
         {productCode === "8713902948686" && (selectedGroupName?.name === 'PALMA EXTERIOR' || 
         selectedGroupName?.name === 'INCHEIETURA EXTERIOR' || 
         selectedGroupName?.name === 'CUREA' || 

@@ -614,15 +614,21 @@ export function DesignerSignature() {
     const filteredAreas =
       product?.areas.filter((area) => isAreaVisible(area.id)) ?? [];
 
-    let filterSignatureAreas = templates[0].areas
-      .filter((template) => template.canAddText === true)
-      .map((template) => {
-        return { id: template.id };
-      });
+    let filterSignatureAreas =
+      templates &&
+      templates.length > 0 &&
+      templates[0].areas
+        .filter((template) => template.canAddText === true)
+        .map((template) => {
+          return { id: template.id };
+        });
     const signatureIdAreas = [];
 
     filteredAreas.forEach((x) => {
-      const found = filterSignatureAreas.some((item2) => item2.id === x.id);
+      const found =
+        filterSignatureAreas &&
+        filterSignatureAreas.length > 0 &&
+        filterSignatureAreas.some((item2) => item2.id === x.id);
       // console.log(found);
       if (found) signatureIdAreas.push(x);
     });
@@ -649,11 +655,14 @@ export function DesignerLogo() {
     const filteredAreas =
       product?.areas.filter((area) => isAreaVisible(area.id)) ?? [];
 
-    let filterSignatureAreas = templates[0].areas
-      .filter((template) => template.canAddImage === true)
-      .map((template) => {
-        return { id: template.id };
-      });
+    let filterSignatureAreas =
+      templates &&
+      templates.length > 0 &&
+      templates[0].areas
+        .filter((template) => template.canAddImage === true)
+        .map((template) => {
+          return { id: template.id };
+        });
 
     // console.log('designer logggggg',isAreaVisible,filterSignatureAreas, filteredAreas, product?.areas);
 
@@ -666,7 +675,10 @@ export function DesignerLogo() {
     const signatureIdAreas = [];
 
     filteredAreas.forEach((x) => {
-      const found = filterSignatureAreas.some((item2) => item2.id === x.id);
+      const found = 
+      filterSignatureAreas &&
+      filterSignatureAreas.length > 0 &&
+      filterSignatureAreas.some((item2) => item2.id === x.id);
       // console.log(found);
       if (found) signatureIdAreas.push(x);
     });
