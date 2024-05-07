@@ -32,7 +32,7 @@ console.log(activeColorOption,fitlerAttributesName,'fitlerAttributesName');
          {currentAttributes.length === 1 ?   currentAttributes[0].name : dynamicsVals?.get('PLAIN') ?? 'Plain'}  
 
         </div>                   
-       {(productCode != '8427833459022' && productCode != '8427835162958') && 
+       {(productCode.toString() != '8427833459022' && productCode.toString() != '8427835162958') && 
        <>
         <div
           data-sel="metallic"
@@ -70,7 +70,7 @@ console.log(activeColorOption,fitlerAttributesName,'fitlerAttributesName');
        </> 
        } 
 
-        {productCode === "8870692454734" && (selectedGroupName?.name === 'PALMA EXTERIOR' || 
+        {(productCode.toString() === "8870692454734" || productCode.toString() === "8713902948686") && (selectedGroupName?.name === 'PALMA EXTERIOR' || 
         selectedGroupName?.name === 'INCHEIETURA EXTERIOR' || 
         selectedGroupName?.name === 'CUREA' || 
         selectedGroupName?.name === 'DEGET MARE EXTERIOR' || 
