@@ -184,6 +184,7 @@ button:focus {
     padding: 0px 20px;
     border-radius: 18px 18px 0px 0px;
     bottom: 0em;
+    height: 550px;
     /* height: 40%; */
     left: 0px;
     top: calc(55% - 015px);
