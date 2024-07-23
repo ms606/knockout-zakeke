@@ -177,14 +177,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
   fitlerAttributes.filter((x) => x !== undefined);
 
-  // if (fitlerAttributes[0].name !== "METALIZAT" && fitlerAttributes[0].name !== "FLUORESCENT" &&
-  // fitlerAttributes[0].name !== "NORMAL" && fitlerAttributes[0].name !== "MAT"
-  // ) {
-  //   selectStepName("KNOCK-X");
-  // }
-  // console.log(fitlerAttributes, "fitlerAttributes");
-
-  // select an attribute if selected step or group change
 
   useEffect(() => {
     if (selectedGroupIDFromTray) {

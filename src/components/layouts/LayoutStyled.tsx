@@ -374,6 +374,7 @@ export const FooterMobileContainer = styled.div<{ isQuoteEnable?: boolean }>`
 	position: absolute;
 	bottom: -55px;
 	width: 100vw;
+	z-index: 44;
 	//  background: none;
 	// 	linear-gradient(to top, 
 	// 	rgb(244, 247, 249) 5%, 
