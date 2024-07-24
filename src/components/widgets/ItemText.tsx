@@ -18,6 +18,7 @@ import { ReactComponent as CloseIcon } from "../../assets/icons/times-solid.svg"
 import { FormControl } from "./FormControl";
 import ColorPicker from "./colorpicker";
 import { FontSelector } from "../fonts/FontSelector";
+import { T } from "../../Helpers";
 
 export interface EditTextItem {
   guid: string;
@@ -199,8 +200,7 @@ const ItemText: FC<{
   fonts?: FontFamily[];
   hideRemoveButton?: boolean;
 }> = ({ item, handleItemPropChange, hideRemoveButton }) => {
-  const { removeItem, fonts, disableTextColors, textColors, publicTranslations } = useZakeke();
-  const dynamicsVals  = publicTranslations?.dynamics;
+  const { removeItem, fonts, disableTextColors, textColors } = useZakeke();
   const constraints = item.constraints;
   const canEdit = constraints?.canEdit ?? true;
   const hasCurvedText = item.isTextOnPath;
@@ -254,7 +254,7 @@ const ItemText: FC<{
           <Cusimg_embu
             onClick={() => togglerFontSelectorVisible(fontSelectorVisible)}
           >
-            {dynamicsVals?.get('Font') ?? 'Font'}  
+            {T._("Font", "Composer")} 
           </Cusimg_embu>
 
           <TextArea

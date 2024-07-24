@@ -103,8 +103,7 @@ const FooterMobile = () => {
 		sellerSettings,
 		saveComposition,
 		createQuote,
-		nftSettings,
-		publicTranslations
+		nftSettings
 	} = useZakeke();
 
 	const {
@@ -125,8 +124,6 @@ const FooterMobile = () => {
 		isMobile
 	} = useStore();
 
-	const dynamicsVals  = publicTranslations?.dynamics;
-
 	const { showDialog, closeDialog } = useDialogManager();
 	const isOutOfStock = false;
 	const isBuyVisibleForQuoteRule = product?.quoteRule ? product.quoteRule.allowAddToCart : true;
@@ -144,7 +141,7 @@ const FooterMobile = () => {
 				<QuestionDialog
 					alignButtons='center'
 					eventMessage={cartMessage?.description}
-					buttonNoLabel={dynamicsVals?.get('Cancel') ?? 'Cancel'}
+					buttonNoLabel={T._('Cancel', "Composer")}
 					buttonYesLabel={T._('Add to cart', 'Composer')}
 					onYesClick={() => {
 						// if (nftSettings && nftSettings.isNFTEnabled && !isDraftEditor)
@@ -390,7 +387,7 @@ const FooterMobile = () => {
 							<div className="menu_footer" style ={{position: 'relative', bottom: '5px',  display: 'flex', justifyContent: 'space-between', width: '100%'}}>
 							<div className="menu_price">
 								{/* <div className="price_text">Price: </div> */}
-								<div>{dynamicsVals?.get('Base') ?? 'Base'} :</div> 
+								<div>{T._('Base', "Composer")} :</div> 
 								<div className="price_value">{priceFormatter.format(price)}</div>
 							</div>
 							</div>

@@ -57,11 +57,9 @@ const Footer = () => {
 		saveComposition,
 		createQuote,
 		nftSettings, 
-		publicTranslations, 
 		groups
 	} = useZakeke();
 	
-	const dynamicsVals  = publicTranslations?.dynamics;   
 	const {
 		setIsLoading,
 		priceFormatter,
@@ -77,10 +75,8 @@ const Footer = () => {
 	 const handleAddToCart = () => {
 		
 		const cartMessage = eventMessages?.find((message) => message.eventID === 4);
-		const staticsVals = publicTranslations?.statics; 
 		const findSizeIndex = groups.findIndex((obj) => obj.name.toLowerCase() === 'marime');
 		const isSizeNotSelected = groups[findSizeIndex]?.attributes[0].options[0].selected === true;
-		const dynamicsVals  = publicTranslations?.dynamics;
 		if (cartMessage && cartMessage.visible && !isDraftEditor && !isEditorMode && !isSizeNotSelected)
 			showDialog(
 				'question',
@@ -88,8 +84,8 @@ const Footer = () => {
 					alignButtons='center'
 					eventMessage={cartMessage?.description}
 					//buttonNoLabel={T._('Cancel', 'Composer')}
-					buttonNoLabel={dynamicsVals?.get('Cancel') ?? 'Cancel'}   
-					buttonYesLabel={staticsVals?.get('Add to cart')} 
+					buttonNoLabel={T._('Cancel', "Composer")}   
+					buttonYesLabel={T._('Add to cart', "Composer")} 
 					onYesClick={() => {
 						addToCart([], undefined, useLegacyScreenshot);
 						closeDialog('question');
@@ -278,7 +274,7 @@ const Footer = () => {
 						<div className="menu_footer" style ={{position: 'relative', bottom: '5px',  display: 'flex', justifyContent: 'space-between', width: '100%'}}>
 						<div className="menu_price">
 							{/* <div className="price_text">Price: </div> */}
-							<div>{dynamicsVals?.get('Base') ?? 'Base'} :</div> <div className="price_value">{priceFormatter.format(price)}</div>
+							<div>{T._('Base', "Composer")} :</div> <div className="price_value">{priceFormatter.format(price)}</div>
 						</div>
 						</div>
 						</>	

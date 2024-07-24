@@ -1,5 +1,5 @@
 import {
-  Image,
+  ZakekeImage as Image,
   ImageItem,
   Item,
   ProductArea,
@@ -209,7 +209,6 @@ const DesignerSignature: FC<{
     setItemFontFamily,
     setItemTextOnPath,
     addItemText,
-    publicTranslations,
     fonts,
     defaultColor 
   } = useZakeke();
@@ -241,9 +240,6 @@ const DesignerSignature: FC<{
       placeholder: 'Input your text here',
       backgroundColor: 'rgb(235, 237, 242)'
   })
-
-  const dynamicVals = publicTranslations?.dynamics;
-  const staticsVals = publicTranslations?.statics; 
   
   const customizerRef = useRef<any | null>(null);
   const [selectedCarouselSlide, setSelectedCarouselSlide] = useState<number>(0);
@@ -392,7 +388,7 @@ const DesignerSignature: FC<{
     const itemText ={
       guid: '',
       name: '',
-      text: `${dynamicVals?.get("Enter Your Name") ?? "Enter Your Name"}`,
+      text: `${T._("Enter Your Name", "Composer")}`,
       fillColor: defaultColor,
       fontFamily: fonts[0].name,
       fontSize: 48,
@@ -581,7 +577,7 @@ const DesignerSignature: FC<{
                   <Icon>
                     <Add />
                   </Icon>
-                  <span>{staticsVals?.get('Text') ?? 'Text'}   </span>
+                  <span>{T._('Text', "Composer")}  </span>
                 </Button_N>
               )}
               </>              

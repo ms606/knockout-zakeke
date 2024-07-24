@@ -58,12 +58,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     items,
     getOnlineScreenshot,
     productCode,
-    publicTranslations,
   } = useZakeke();
 
-
-  const staticsVals = publicTranslations?.statics;
-  const dynamicsVals = publicTranslations?.dynamics;
   const { setIsLoading, isMobile } = useStore();
 
   const useActualGroups_ = useActualGroups();
@@ -634,7 +630,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                         }}
                       >
                         <div className="mchead">
-                          {dynamicsVals?.get("Overlay Type") ?? "Overlay Type"}
+                          {T._("Overlay type", "Composer")}
                         </div>
                         <div className="infsel">
                           <div className="custom-dropdown">
@@ -760,8 +756,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                     selectedStepName === "KNOCK-X" ? (
                       <div>
                         <div className="knockXlabel">
-                          {dynamicsVals?.get("SELECT DESIGN THEME") ??
-                            "SELECT DESIGN THEME"}
+                          {T._("SELECT DESIGN THEME", "Composer")}
                         </div>
                         <Swiper
                           spaceBetween={1}
@@ -811,8 +806,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
                         <br />
                         <div className="knockXlabel">
-                          {dynamicsVals?.get("SELECT COLOR THEME") ??
-                            "SELECT COLOR THEME"}
+                          {T._("SELECT COLOR THEME", "Composer")}
                         </div>
                         <ListX>
                           {fitlerAttributes[0] &&
@@ -858,12 +852,12 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
         <div className="gbuts">
           {/* <button className="previous-customization" onClick={handleLeftClick}> */}
           <div id="gprev" className="mc-prev" onClick={handleLeftClick}>
-            {dynamicsVals?.get("Back") ?? "Back"}
+            {T._("Back", "Composer")}
           </div>
           {/* </button> */}
           {/* <button className="next-customization" onClick={handleRightClick}> */}
           <div id="gnext" className="mc-next" onClick={handleRightClick}>
-            {dynamicsVals?.get("Next") ?? "Next"}
+            {T._("Next", "Composer")}
           </div>
           {/* </button> */}
         </div>

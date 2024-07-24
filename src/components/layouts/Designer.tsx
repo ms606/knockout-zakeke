@@ -1,5 +1,5 @@
 import {
-  Image,
+  ZakekeImage as Image,
   ImageItem,
   Item,
   ProductArea,
@@ -240,7 +240,6 @@ const Designer: FC<{
     eventMessages,
     setCopyrightMessageAccepted,
     getCopyrightMessageAccepted,
-    publicTranslations,
     fonts,
     defaultColor 
   } = useZakeke();
@@ -259,8 +258,6 @@ const Designer: FC<{
     backgroundColor: string
 }
 
-const staticsVals = publicTranslations?.statics;
-
    const [item, setItem] = useState<EditTextItem_1>({
       guid: '',
       name: '',
@@ -274,9 +271,6 @@ const staticsVals = publicTranslations?.statics;
       placeholder: 'Input your text here',
       backgroundColor: 'rgb(235, 237, 242)'
   })
-
-
-  const dynamicVals = publicTranslations?.dynamics;
   
   const customizerRef = useRef<any | null>(null);
   const [selectedCarouselSlide, setSelectedCarouselSlide] = useState<number>(0);
@@ -446,7 +440,7 @@ const staticsVals = publicTranslations?.statics;
     const itemText ={
       guid: '',
       name: '',
-      text: `${dynamicVals?.get("Enter Your Name") ?? "Enter Your Name"}`,
+      text: `${T._("Enter your text", "Composer")}`,
       fillColor: defaultColor,
       fontFamily: fonts[0].name,
       fontSize: 48,
@@ -687,7 +681,7 @@ const staticsVals = publicTranslations?.statics;
           {isMobile && translatedAreas.length > 1 && (
             <SelectContainer>
               {/* <span>{T._("Customizable Areas", "Composer")}</span> */}
-              <span>{dynamicVals?.get('Customizable Areas')}</span>              
+              <span>{T._('Customizable Areas', "Composer")}</span>              
               <Select
                 styles={{
                   control: (base) => ({
@@ -799,7 +793,7 @@ const staticsVals = publicTranslations?.statics;
                             isItemEditable(item, currentTemplateArea)
                         )
                           ? T._("Upload another image", "Composer")
-                          : dynamicVals?.get('Upload image') // T._("Upload image", "Composer")
+                          : T._("Upload image", "Composer")
                           }{" "}
                       </span>
                     </span>
