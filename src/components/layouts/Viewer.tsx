@@ -1,4 +1,4 @@
-import { ProductQuantityRule, useZakeke, ZakekeViewer } from 'zakeke-configurator-react';
+import { ProductQuantityRule, useZakeke, ZakekeViewer } from '@zakeke/zakeke-configurator-react';
 import { Button } from '../Atomic';
 import {
 	findAttribute,
@@ -103,7 +103,7 @@ const Viewer = () => {
 
 	return (
 		<ViewerContainer ref={ref}>
-			{!isSceneLoading && <ZakekeViewer bgColor='transparent' />}			
+			{!isSceneLoading && <ZakekeViewer bgColor='transparent' className='test'  />}			
 				<>
 				{<div style={{ position: "absolute", top: "0.52em", left: "3em", fontWeight: "555"}}>
 					<div>{product?.name}</div>

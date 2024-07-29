@@ -6,7 +6,7 @@ import {
   Option,
   SellerSettings,
   useZakeke,
-} from "zakeke-configurator-react";
+} from '@zakeke/zakeke-configurator-react';
 
 import {
   DesignerHelper,

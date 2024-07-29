@@ -13,7 +13,7 @@ import {
   MobileItemContainer,
 } from "../LayoutStyled";
 
-import { useZakeke } from "zakeke-configurator-react";
+import { useZakeke } from '@zakeke/zakeke-configurator-react';
 
 import noImage from "../../../assets/images/no_image.png";
 // import Tooltip from "components/widgets/tooltip";

@@ -5,7 +5,7 @@ import {
   ZakekeViewer,
   ZakekeProvider,
   useZakeke
-} from "zakeke-configurator-react";
+} from '@zakeke/zakeke-configurator-react';
 import Selector from "./selector";
 import { DialogsRenderer } from "./dialog/Dialogs";
 import useStore from "../Store";
@@ -112,7 +112,7 @@ const App: FunctionComponent<{}> = () => {
                         // background: "linear-gradient(to top, rgb(244, 247, 249) 20%, rgb(213, 225, 231) 40%, rgb(223, 232, 237))" 
                       }}
                 >
-                 <ZakekeViewer />
+                 <ZakekeViewer bgColor='transparent' className='test'  />
                 </div>
               </div>
               <Selector trayPreviewOpenButton3DFunc={trayPreviewOpenButton3DFunc} />              
@@ -139,7 +139,7 @@ const App: FunctionComponent<{}> = () => {
                       : { width: "85vw", height: "94vh", marginTop: "26px" }
                   }
                 >
-                  <ZakekeViewer />
+                  <ZakekeViewer bgColor='transparent' className='test'  />
                 </div>
               </div>
               <Selector

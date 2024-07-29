@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { ThemeTemplateGroup, useZakeke } from 'zakeke-configurator-react';
+import { ThemeTemplateGroup, useZakeke } from '@zakeke/zakeke-configurator-react';
 import { T } from '../Helpers';
 import Select from 'react-select';
 import { CloseEditorButton } from './Atomic';

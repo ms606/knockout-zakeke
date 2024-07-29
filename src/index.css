@@ -205,4 +205,6 @@ button:focus {
     
 
   }
-  
+  .zakeke-viewer-container canvas {
+    background-color: transparent!important;
+  }

@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import useStore from "../../Store";
 import styled from "styled-components";
-import { useZakeke } from 'zakeke-configurator-react';
+import { useZakeke } from '@zakeke/zakeke-configurator-react';
 import { ReactComponent as CloseIcon } from '../../assets/icons/times-solid.svg';
 import { T } from '../../Helpers';
 import { CloseEditorButton, Icon } from '../Atomic';

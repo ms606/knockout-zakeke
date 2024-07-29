@@ -1,5 +1,5 @@
 import React from 'react';
-import { useZakeke } from 'zakeke-configurator-react';
+import { useZakeke } from '@zakeke/zakeke-configurator-react';
 import { T } from '../../Helpers';
 import useStore from '../../Store';
 import styled from 'styled-components';
@@ -103,7 +103,8 @@ const FooterMobile = () => {
 		sellerSettings,
 		saveComposition,
 		createQuote,
-		nftSettings
+		nftSettings,
+		translations
 	} = useZakeke();
 
 	const {
@@ -129,6 +130,9 @@ const FooterMobile = () => {
 	const isBuyVisibleForQuoteRule = product?.quoteRule ? product.quoteRule.allowAddToCart : true;
 	const isAddToCartDisabled = isOutOfStock || isAddToCartLoading;
 
+	const dynamicsVals = translations?.dynamics;
+	const staticsVals = translations?.statics;
+
 	const handleAddToCart = () => {
 		const cartMessage = eventMessages?.find((message) => message.eventID === 4);
 
@@ -141,8 +145,8 @@ const FooterMobile = () => {
 				<QuestionDialog
 					alignButtons='center'
 					eventMessage={cartMessage?.description}
-					buttonNoLabel={T._('Cancel', "Composer")}
-					buttonYesLabel={T._('Add to cart', 'Composer')}
+					buttonNoLabel={dynamicsVals?.get('Cancel') ?? 'Cancel'}
+					buttonYesLabel={staticsVals?.get('Add to cart') ?? 'Add to cart'}
 					onYesClick={() => {
 						// if (nftSettings && nftSettings.isNFTEnabled && !isDraftEditor)
 						// 	showDialog(
@@ -387,7 +391,7 @@ const FooterMobile = () => {
 							<div className="menu_footer" style ={{position: 'relative', bottom: '5px',  display: 'flex', justifyContent: 'space-between', width: '100%'}}>
 							<div className="menu_price">
 								{/* <div className="price_text">Price: </div> */}
-								<div>{T._('Base', "Composer")} :</div> 
+								<div>{dynamicsVals?.get('Base') ?? 'Base'}</div>
 								<div className="price_value">{priceFormatter.format(price)}</div>
 							</div>
 							</div>

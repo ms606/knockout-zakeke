@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from "react";
-import styled from "styled-components/macro";
-import { FontFamily, useZakeke } from "zakeke-configurator-react";
+import styled from "styled-components";
+import { FontFamily, useZakeke } from '@zakeke/zakeke-configurator-react';
 import { Button, Columns, Icon, TextArea, FontTextArea } from "../Atomic";
 //import { T } from '../../Helpers';
 import Select, {
@@ -200,11 +200,13 @@ const ItemText: FC<{
   fonts?: FontFamily[];
   hideRemoveButton?: boolean;
 }> = ({ item, handleItemPropChange, hideRemoveButton }) => {
-  const { removeItem, fonts, disableTextColors, textColors } = useZakeke();
+  const { removeItem, fonts, disableTextColors, textColors, translations } = useZakeke();
   const constraints = item.constraints;
   const canEdit = constraints?.canEdit ?? true;
   const hasCurvedText = item.isTextOnPath;
   const isUpperCase = constraints?.toUppercase ?? false;
+
+  const dynamicsVals = translations?.dynamics;
 
   // Used for performance cache
   const [fillColor, setFillColor] = useState(item.fillColor);
@@ -254,7 +256,7 @@ const ItemText: FC<{
           <Cusimg_embu
             onClick={() => togglerFontSelectorVisible(fontSelectorVisible)}
           >
-            {T._("Font", "Composer")} 
+            {dynamicsVals?.get("Font") ?? "Font"}
           </Cusimg_embu>
 
           <TextArea

@@ -1,12 +1,12 @@
 // import React, { FC, useRef } from 'react';
-// import styled from 'styled-components/macro';
+// import styled from 'styled-components';
 // import info from '../../../assets/icons/info-circle-solid.svg';
 // import useDropdown from '../../../hooks/useDropdown';
 
-// interface TooltipProps {
-// 	optionDescription?: string;
-// 	isMobile?: boolean;
-// }
+export  interface TooltipProps {
+ 	optionDescription?: string;
+ 	isMobile?: boolean;
+ }
 
 // const TooltipContainer = styled.div`
 // 	position: absolute;

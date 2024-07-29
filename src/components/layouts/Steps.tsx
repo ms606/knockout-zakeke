@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { Step, useZakeke } from 'zakeke-configurator-react';
+import { Step, useZakeke } from '@zakeke/zakeke-configurator-react';
 import { StepsContainer } from "./LayoutStyled";
 import styled from "styled-components";
 import { Icon } from "../Atomic";

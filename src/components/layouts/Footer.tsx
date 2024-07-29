@@ -1,10 +1,10 @@
-import { useZakeke } from 'zakeke-configurator-react';
+import { useZakeke } from '@zakeke/zakeke-configurator-react';
 import {AddToCartButton, Button, Icon, TooltipContent } from '../Atomic';
 import SaveDesignsDraftDialog from '../dialog/SaveDesignsDraftDialog';
 import { T } from '../../Helpers';
 import { TailSpin } from 'react-loader-spinner';
 import useStore from '../../Store';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { ReactComponent as PdfSolid } from '../../assets/icons/file-pdf-solid.svg';
 import { ReactComponent as SaveSolid } from '../../assets/icons/save-solid.svg';
 import { ReactComponent as ShareSolid } from '../../assets/icons/share-alt-square-solid.svg';
@@ -57,7 +57,8 @@ const Footer = () => {
 		saveComposition,
 		createQuote,
 		nftSettings, 
-		groups
+		groups,
+		translations
 	} = useZakeke();
 	
 	const {
@@ -72,6 +73,9 @@ const Footer = () => {
 
 	const { showDialog, closeDialog } = useDialogManager();
 
+	const dynamicsVals = translations?.dynamics;
+	const staticsVals = translations?.statics;
+
 	 const handleAddToCart = () => {
 		
 		const cartMessage = eventMessages?.find((message) => message.eventID === 4);
@@ -84,8 +88,8 @@ const Footer = () => {
 					alignButtons='center'
 					eventMessage={cartMessage?.description}
 					//buttonNoLabel={T._('Cancel', 'Composer')}
-					buttonNoLabel={T._('Cancel', "Composer")}   
-					buttonYesLabel={T._('Add to cart', "Composer")} 
+					buttonNoLabel={dynamicsVals?.get('Cancel') ?? 'Cancel'}
+					buttonYesLabel={staticsVals?.get('Add to cart') ?? 'Add to cart'}
 					onYesClick={() => {
 						addToCart([], undefined, useLegacyScreenshot);
 						closeDialog('question');
@@ -274,7 +278,8 @@ const Footer = () => {
 						<div className="menu_footer" style ={{position: 'relative', bottom: '5px',  display: 'flex', justifyContent: 'space-between', width: '100%'}}>
 						<div className="menu_price">
 							{/* <div className="price_text">Price: </div> */}
-							<div>{T._('Base', "Composer")} :</div> <div className="price_value">{priceFormatter.format(price)}</div>
+							<div>{dynamicsVals?.get('Base') ?? 'Base'}:
+								</div> <div className="price_value">{priceFormatter.format(price)}</div>
 						</div>
 						</div>
 						</>	

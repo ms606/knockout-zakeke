@@ -1,9 +1,9 @@
-import { Option, Step, ThemeTemplateGroup, useZakeke } from 'zakeke-configurator-react';
+import { Option, Step, ThemeTemplateGroup, useZakeke } from '@zakeke/zakeke-configurator-react';
 import { T, useActualGroups, useUndoRedoActions, useUndoRegister } from '../../../Helpers';
 import { Map } from 'immutable';
 import React, { useEffect, useState } from 'react';
 import useStore from '../../../Store';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import savedCompositionsIcon from '../../../assets/icons/arrow-left-solid.svg';
 import star from '../../../assets/icons/star.svg';
 import noImage from '../../../assets/images/no_image.png';
@@ -14,7 +14,7 @@ import Steps from '../Steps';
 import { MenuItem, MobileItemsContainer } from './SelectorMobileComponents';
 import TemplateGroup from '../../TemplateGroup';
 import { PreviewContainer, BlurOverlay } from '../../previewContainer';
-import ProgressBarLoadingOverlay from "../..//widgets/ProgressBarLoadingOverlay";
+import ProgressBarLoadingOverlay from "../../widgets/ProgressBarLoadingOverlay.";
 
 const PriceInfoTextContainer = styled.div`
 	font-size: 14px;

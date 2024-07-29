@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from "react"
 import styled from "styled-components";
 import { Dialog, DialogWindow } from "./Dialogs"
-import { useZakeke } from 'zakeke-configurator-react';
+import { useZakeke } from '@zakeke/zakeke-configurator-react';
 import { TailSpin } from 'react-loader-spinner';
 import { T } from '../../Helpers';
 import Creatable from 'react-select/creatable';

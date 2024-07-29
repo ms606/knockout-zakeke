@@ -4,7 +4,7 @@ import React, { FC, useEffect, useState } from "react";
 import { TailSpin } from 'react-loader-spinner';
 import useStore from "../../Store";
 import styled from 'styled-components';
-import { useZakeke } from 'zakeke-configurator-react';
+import { useZakeke } from '@zakeke/zakeke-configurator-react';
 import { ReactComponent as FbIcon } from '../../assets/images/social/facebook_svg.svg';
 import { ReactComponent as EmailIcon } from '../../assets/images/social/mail_svg.svg';
 import { ReactComponent as PinIcon } from '../../assets/images/social/pinterest_svg.svg';

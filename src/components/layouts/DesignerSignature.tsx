@@ -7,7 +7,7 @@ import {
   TextItem,
   ZakekeDesigner,
   useZakeke,
-} from "zakeke-configurator-react";
+} from '@zakeke/zakeke-configurator-react';
 import useStore from "../../Store";
 import React, { FC, useEffect, useRef, useState } from "react";
 import Select, {
@@ -16,8 +16,8 @@ import Select, {
   SingleValueProps,
   components
 } from "react-select";
-import styled from "styled-components/macro";
-import { T } from "../../Helpers";
+import styled from "styled-components";
+import { T, Translations } from '../../Helpers';
 import { ReactComponent as ArrowLeftIcon } from "../../assets/icons/arrow-left-solid.svg";
 import { ReactComponent as ArrowRightIcon } from "../../assets/icons/arrow-right-solid.svg";
 import { ReactComponent as Arrows } from "../../assets/icons/arrows-alt-solid.svg";
@@ -210,7 +210,8 @@ const DesignerSignature: FC<{
     setItemTextOnPath,
     addItemText,
     fonts,
-    defaultColor 
+    defaultColor,
+    translations
   } = useZakeke();
 
   interface EditTextItem_1 {
@@ -252,6 +253,9 @@ const DesignerSignature: FC<{
   const [moveElements, setMoveElements] = useState(false);
 
   console.log(templates,'templates');
+
+  const dynamicsVals = translations?.dynamics;
+  const staticsVals = translations?.statics;
   
   let translatedTemplates = templates.map((template) => {
     return { id: template.id, name: template.name, areas: template.areas };
@@ -388,7 +392,7 @@ const DesignerSignature: FC<{
     const itemText ={
       guid: '',
       name: '',
-      text: `${T._("Enter Your Name", "Composer")}`,
+      text: `${dynamicsVals?.get("Enter Your Name")}`,
       fillColor: defaultColor,
       fontFamily: fonts[0].name,
       fontSize: 48,
@@ -577,7 +581,7 @@ const DesignerSignature: FC<{
                   <Icon>
                     <Add />
                   </Icon>
-                  <span>{T._('Text', "Composer")}  </span>
+                  <span>{staticsVals?.get('Text')}  </span>
                 </Button_N>
               )}
               </>              

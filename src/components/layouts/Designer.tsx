@@ -7,7 +7,7 @@ import {
   TextItem,
   ZakekeDesigner,
   useZakeke,
-} from "zakeke-configurator-react";
+} from '@zakeke/zakeke-configurator-react';
 import useStore from "../../Store";
 import React, { FC, useEffect, useRef, useState } from "react";
 import Select, {
@@ -16,7 +16,7 @@ import Select, {
   SingleValueProps,
   components
 } from "react-select";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { T } from "../../Helpers";
 import { ReactComponent as ArrowLeftIcon } from "../../assets/icons/arrow-left-solid.svg";
 import { ReactComponent as ArrowRightIcon } from "../../assets/icons/arrow-right-solid.svg";
@@ -241,7 +241,8 @@ const Designer: FC<{
     setCopyrightMessageAccepted,
     getCopyrightMessageAccepted,
     fonts,
-    defaultColor 
+    defaultColor,
+    translations
   } = useZakeke();
 
   interface EditTextItem_1 {
@@ -281,6 +282,10 @@ const Designer: FC<{
   let finalVisibleAreas: ProductArea[] = [];
 
   const [moveElements, setMoveElements] = useState(false);
+
+  const dynamicsVals = translations?.dynamics;
+  const staticsVals = translations?.statics;
+
 
   let translatedTemplates = templates.map((template) => {
     return { id: template.id, name: template.name, areas: template.areas };
@@ -440,7 +445,7 @@ const Designer: FC<{
     const itemText ={
       guid: '',
       name: '',
-      text: `${T._("Enter your text", "Composer")}`,
+      text: `${dynamicsVals?.get("Enter your text") ?? "Enter your text"}`,
       fillColor: defaultColor,
       fontFamily: fonts[0].name,
       fontSize: 48,
@@ -681,7 +686,7 @@ const Designer: FC<{
           {isMobile && translatedAreas.length > 1 && (
             <SelectContainer>
               {/* <span>{T._("Customizable Areas", "Composer")}</span> */}
-              <span>{T._('Customizable Areas', "Composer")}</span>              
+              <span>{dynamicsVals?.get('Customizable Areas')}</span>              
               <Select
                 styles={{
                   control: (base) => ({
@@ -793,7 +798,7 @@ const Designer: FC<{
                             isItemEditable(item, currentTemplateArea)
                         )
                           ? T._("Upload another image", "Composer")
-                          : T._("Upload image", "Composer")
+                          : dynamicsVals?.get("Upload image")
                           }{" "}
                       </span>
                     </span>

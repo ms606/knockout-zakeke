@@ -1,6 +1,6 @@
 import "./selector.css";
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
-import { useZakeke } from "zakeke-configurator-react";
+import { useZakeke } from '@zakeke/zakeke-configurator-react';
 import {
   List,
   ListX,
@@ -13,7 +13,7 @@ import {
 import { PreviewContainer, BlurOverlay } from "./previewContainer";
 import Tray from "./Tray";
 
-import ProgressBarLoadingOverlay from "./widgets/ProgressBarLoadingOverlay";
+import ProgressBarLoadingOverlay from "./widgets/ProgressBarLoadingOverlay.";
 import DesignerSignature from "./layouts/DesignerSignature";
 import DesignerLogo from "./layouts/DesignerLogo";
 import useStore from "../Store";
@@ -58,6 +58,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     items,
     getOnlineScreenshot,
     productCode,
+    translations
   } = useZakeke();
 
   const { setIsLoading, isMobile } = useStore();
@@ -112,6 +113,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   }
 
   const [width, setWidth] = useState(window.innerWidth);
+
+  const dynamicsVals = translations?.dynamics;
+  const staticsVals = translations?.statics;
 
   const [isCustomDropDownOpen, setIsCustomDropDownOpen] = useState(false);
 
@@ -630,7 +634,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                         }}
                       >
                         <div className="mchead">
-                          {T._("Overlay type", "Composer")}
+                          {dynamicsVals?.get("Overlay type") ?? "Overlay type"}
                         </div>
                         <div className="infsel">
                           <div className="custom-dropdown">
@@ -756,7 +760,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                     selectedStepName === "KNOCK-X" ? (
                       <div>
                         <div className="knockXlabel">
-                          {T._("SELECT DESIGN THEME", "Composer")}
+                          {dynamicsVals?.get("SELECT DESIGN THEME") ?? "SELECT DESIGN THEME"}
                         </div>
                         <Swiper
                           spaceBetween={1}
@@ -806,7 +810,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
                         <br />
                         <div className="knockXlabel">
-                          {T._("SELECT COLOR THEME", "Composer")}
+                          {dynamicsVals?.get("SELECT COLOR THEME") ?? "SELECT COLOR THEME"}
                         </div>
                         <ListX>
                           {fitlerAttributes[0] &&
@@ -852,12 +856,12 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
         <div className="gbuts">
           {/* <button className="previous-customization" onClick={handleLeftClick}> */}
           <div id="gprev" className="mc-prev" onClick={handleLeftClick}>
-            {T._("Back", "Composer")}
+            {dynamicsVals?.get("Back") ?? "Back"}
           </div>
           {/* </button> */}
           {/* <button className="next-customization" onClick={handleRightClick}> */}
           <div id="gnext" className="mc-next" onClick={handleRightClick}>
-            {T._("Next", "Composer")}
+            {dynamicsVals?.get("Next") ?? "Next"}
           </div>
           {/* </button> */}
         </div>

@@ -7,7 +7,7 @@ import {
   TextItem,
   ZakekeDesigner,
   useZakeke,
-} from "zakeke-configurator-react";
+} from '@zakeke/zakeke-configurator-react';
 import useStore from "../../Store";
 import React, { FC, useEffect, useRef, useState } from "react";
 import Select, {
@@ -16,7 +16,7 @@ import Select, {
   SingleValueProps,
   components
 } from "react-select";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { T } from "../../Helpers";
 import { ReactComponent as ArrowLeftIcon } from "../../assets/icons/arrow-left-solid.svg";
 import { ReactComponent as ArrowRightIcon } from "../../assets/icons/arrow-right-solid.svg";

@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Dialog, DialogFooterButton, DialogWindow } from './Dialogs';
 import { T } from '../../Helpers';
-import { useZakeke } from 'zakeke-configurator-react';
+import { useZakeke } from '@zakeke/zakeke-configurator-react';
 import { QuantityContainer } from '../layouts/LayoutStyled';
 import NumericInput from '../layouts/NumericInput';
-import { ProductQuantityRule } from 'zakeke-configurator-react';
+import { ProductQuantityRule } from '@zakeke/zakeke-configurator-react';
 
 const QuantityDialogWindow = styled(DialogWindow)`
 	max-width: unset;
@@ -14,10 +14,12 @@ const QuantityDialogWindow = styled(DialogWindow)`
 `;
 
 const QuantityDialog: FC<{ quantityRule: ProductQuantityRule; onClick: () => void }> = ({ quantityRule, onClick }) => {
-	const { isSceneLoading, setQuantity, quantity } = useZakeke();
+	const { isSceneLoading, setQuantity, quantity, translations } = useZakeke();
 	const [quantityValue, setQuantityValue] = React.useState(
 		quantityRule && quantityRule?.minQuantity ? quantityRule.minQuantity : quantity
 	);
+
+	const staticsVals = translations?.statics;
 
 	React.useEffect(() => {
 		const delayInputTimeoutId = setTimeout(() => {
@@ -60,7 +62,7 @@ const QuantityDialog: FC<{ quantityRule: ProductQuantityRule; onClick: () => voi
 					onClick();
 				}}
 			>
-				{T._('Add to cart', 'Composer')}
+				{staticsVals?.get('Add to cart')}
 			</DialogFooterButton>
 		</Dialog>
 	);

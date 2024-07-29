@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { TailSpin } from 'react-loader-spinner';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 const LoadingBackground = styled.div`
 	left: 0;

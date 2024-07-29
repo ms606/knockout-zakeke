@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import styled from "styled-components";
-import { TemplateArea, useZakeke } from 'zakeke-configurator-react';
+import { TemplateArea, useZakeke } from '@zakeke/zakeke-configurator-react';
 import { Button, Icon } from '../Atomic';
 import { T } from '../../Helpers';
 import { ReactComponent as CloseIcon } from '../../assets/icons/times-solid.svg';

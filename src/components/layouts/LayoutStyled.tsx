@@ -1,7 +1,7 @@
 import { EditTextItem } from '../widgets/ItemText';
 import { EditImageItem } from '../widgets/ItemImage';
 import { DialogWindow } from '../dialog/Dialogs';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { Icon } from '../Atomic';
 
 export const GroupItem = styled.div`
