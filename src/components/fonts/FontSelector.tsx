@@ -11,10 +11,14 @@ export const FontSelector: React.FC<any> = ({fontSelectorVisible, togglerFontSel
 
         <div id='fontList'>
             <div className='chead'>
-             Select
-             <span style={{color: "rgb(255, 255, 255)", fontWeight: "500", paddingLeft: "8px"}}>Font</span>
+             {dynamicsVals?.get("Select") ?? "Select"}
+             <span style={{color: "rgb(255, 255, 255)", fontWeight: "500", paddingLeft: "8px"}}>
+                {dynamicsVals?.get("Font") ?? "Font"}
+             </span>
             </div>
-            <div style={{color: 'white' ,fontSize: '11px'}}>Please select a font</div>
+            <div style={{color: 'white' ,fontSize: '11px'}}>
+                {dynamicsVals?.get("Please select a font") ?? "Please select a font"}
+            </div>
             <div>
              {fonts.map(x =>
                 <div key={x.fontFamilyGuid} className='fsamp'
