@@ -303,7 +303,7 @@ const ItemText: FC<{
           item={item}
         />
 
-        {(!disableTextColors ||
+        {/* {(!disableTextColors ||
           !(disableTextColors && textColors.length === 1)) && (
          <div style={{width: '21%'}}>
           <FormControl label="">
@@ -320,7 +320,7 @@ const ItemText: FC<{
                 </ColorPickerContainer>
               )}
 
-              {/* {!disableTextColors && (
+              {!disableTextColors && (
                 <TextColorsContainer isDefaultPalette>
                   {defaultColorsPalette.map((hex) => (
                     <SinglePaletteItem
@@ -334,7 +334,7 @@ const ItemText: FC<{
                     />
                   ))}
                 </TextColorsContainer>
-              )} */}
+              )} 
 
               {disableTextColors && (
                 <TextColorsContainer>
@@ -359,7 +359,7 @@ const ItemText: FC<{
           </FormControl>
 
          </div> 
-        )}
+        )} */}
       </ItemTextContainer>
     );
   else return null;

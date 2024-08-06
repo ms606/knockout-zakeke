@@ -1,6 +1,6 @@
 import "./selector.css";
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
-import { useZakeke } from '@zakeke/zakeke-configurator-react';
+import { useZakeke } from "@zakeke/zakeke-configurator-react";
 import {
   List,
   ListX,
@@ -58,7 +58,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     items,
     getOnlineScreenshot,
     productCode,
-    translations
+    translations,
   } = useZakeke();
 
   const { setIsLoading, isMobile } = useStore();
@@ -176,7 +176,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   });
 
   fitlerAttributes.filter((x) => x !== undefined);
-
 
   useEffect(() => {
     if (selectedGroupIDFromTray) {
@@ -355,7 +354,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     setCurrentIndex(newIndex);
     selectGroup(newGroup.id);
     if (newGroup.steps) selectStep(newGroup.steps[0]?.id);
-  
   };
 
   const handleRightClick = () => {
@@ -621,7 +619,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                     display: isTrayOpen ? "none" : "block",
                   }}
                 >
-                  {/* {(fitlerAttributes[0]?.name === "METALIZAT" ||
+                  {
+                    /* {(fitlerAttributes[0]?.name === "METALIZAT" ||
                     fitlerAttributes[0]?.name === "FLUORESCENT" ||
                     fitlerAttributes[0]?.name === "NORMAL" ||
                     fitlerAttributes[0]?.name === "MAT") || */
@@ -669,14 +668,15 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                           </div>
                         </div>
                       </div>
-                    )}
+                    )
+                  }
 
                   {(fitlerAttributes[0].name === "METALIZAT" ||
                     fitlerAttributes[0].name === "FLUORESCENT" ||
                     fitlerAttributes[0].name === "NORMAL" ||
-                    fitlerAttributes[0].name === "MAT"||
-                    fitlerAttributes[0].name === "CULOARE") && 
-                     fitlerAttributes[0]?.code != "OPTIUNI IMPRIMARE" &&
+                    fitlerAttributes[0].name === "MAT" ||
+                    fitlerAttributes[0].name === "CULOARE") &&
+                    fitlerAttributes[0]?.code != "OPTIUNI IMPRIMARE" &&
                     selectedStepName !== "KNOCK-X" && (
                       <List>
                         {!selectedTrayPreviewOpenButton &&
@@ -750,17 +750,17 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                     )}
 
                   <div>
-                    {fitlerAttributes[0].name !== "METALIZAT" &&
-                    fitlerAttributes[0].name !== "FLUORESCENT" &&
-                    fitlerAttributes[0].name !== "NORMAL" &&
-                    fitlerAttributes[0].name !== "MAT" &&
-                    fitlerAttributes[0].name !== "OPTIUNI IMPRIMARE" &&
-                    fitlerAttributes[0].name !== "CULOARE"
-                    ||
+                    {(fitlerAttributes[0].name !== "METALIZAT" &&
+                      fitlerAttributes[0].name !== "FLUORESCENT" &&
+                      fitlerAttributes[0].name !== "NORMAL" &&
+                      fitlerAttributes[0].name !== "MAT" &&
+                      fitlerAttributes[0].name !== "OPTIUNI IMPRIMARE" &&
+                      fitlerAttributes[0].name !== "CULOARE") ||
                     selectedStepName === "KNOCK-X" ? (
                       <div>
                         <div className="knockXlabel">
-                          {dynamicsVals?.get("SELECT DESIGN THEME") ?? "SELECT DESIGN THEME"}
+                          {dynamicsVals?.get("SELECT DESIGN THEME") ??
+                            "SELECT DESIGN THEME"}
                         </div>
                         <Swiper
                           spaceBetween={1}
@@ -810,7 +810,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
                         <br />
                         <div className="knockXlabel">
-                          {dynamicsVals?.get("SELECT COLOR THEME") ?? "SELECT COLOR THEME"}
+                          {dynamicsVals?.get("SELECT COLOR THEME") ??
+                            "SELECT COLOR THEME"}
                         </div>
                         <ListX>
                           {fitlerAttributes[0] &&
@@ -865,6 +866,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
           </div>
           {/* </button> */}
         </div>
+        <div className="empty-space-div"></div>
 
         {width <= 460 && <FooterMobile />}
       </div>
