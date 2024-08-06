@@ -159,7 +159,7 @@ export const ZakekeDesignerContainer = styled.div<{ isMobile?: boolean }>`
 	background: linear-gradient(to bottom, rgb(56 177 162 / 0%) 0%, rgb(233 229 229) 100%);
 	${(props) =>
 		props.isMobile &&
-		`
+		`background: white !important;
 		position:fixed;
         inset:0;
         z-index:13;
@@ -374,7 +374,7 @@ export const FooterMobileContainer = styled.div<{ isQuoteEnable?: boolean }>`
 	position: absolute;
 	bottom: -55px;
 	width: 100vw;
-	z-index: 44;
+	// z-index: 44;
 	//  background: none;
 	// 	linear-gradient(to top, 
 	// 	rgb(244, 247, 249) 5%, 
