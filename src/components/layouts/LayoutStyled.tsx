@@ -161,6 +161,8 @@ export const ZakekeDesignerContainer = styled.div<{ isMobile?: boolean }>`
 		props.isMobile &&
 		`background: white !important;
 		position:fixed;
+		justify-content: center;
+		align-items: center;
         inset:0;
         z-index:13;
 		height: 94%;

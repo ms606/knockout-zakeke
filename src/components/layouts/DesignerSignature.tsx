@@ -7,17 +7,17 @@ import {
   TextItem,
   ZakekeDesigner,
   useZakeke,
-} from '@zakeke/zakeke-configurator-react';
+} from "@zakeke/zakeke-configurator-react";
 import useStore from "../../Store";
 import React, { FC, useEffect, useRef, useState } from "react";
 import Select, {
   GroupBase,
   OptionProps,
   SingleValueProps,
-  components
+  components,
 } from "react-select";
 import styled from "styled-components";
-import { T, Translations } from '../../Helpers';
+import { T, Translations } from "../../Helpers";
 import { ReactComponent as ArrowLeftIcon } from "../../assets/icons/arrow-left-solid.svg";
 import { ReactComponent as ArrowRightIcon } from "../../assets/icons/arrow-right-solid.svg";
 import { ReactComponent as Arrows } from "../../assets/icons/arrows-alt-solid.svg";
@@ -106,8 +106,8 @@ const DesignerContainer = styled.div<{ isMobile?: boolean }>`
 `;
 
 const DesignerContainerHeader = styled.div<{}>`
-    display: flex;
-    flex-flow: row;
+  display: flex;
+  flex-flow: row;
 `;
 
 const UploadButtons = styled.div`
@@ -139,15 +139,14 @@ const Area = styled.div<{ selected?: boolean }>`
   letter-spacing: 0px;
   word-spacing: 1px;
 
-  border: 1px solid #297CA3;
+  border: 1px solid #297ca3;
   font-size: 10px;
   border-radius: 4px;
   background-color: white;
-  color: #297CA3;
-
+  color: #297ca3;
 
   &:hover {
-    border: 3px solid #297CA3;
+    border: 3px solid #297ca3;
   }
 
   ${(props) =>
@@ -188,7 +187,7 @@ const DesignerSignature: FC<{
   onCloseClick?: () => void;
   togglePersonalize?: () => void;
   selectedAreaID?: any;
-}> = ({ onCloseClick, togglePersonalize, selectedAreaID}) => {
+}> = ({ onCloseClick, togglePersonalize, selectedAreaID }) => {
   const { showDialog, closeDialog } = useDialogManager();
   const [forceUpdate, setForceUpdate] = useState(false);
   const { setIsLoading, isMobile } = useStore();
@@ -211,52 +210,52 @@ const DesignerSignature: FC<{
     addItemText,
     fonts,
     defaultColor,
-    translations
+    translations,
   } = useZakeke();
 
   interface EditTextItem_1 {
-    guid: string,
-    name: string,
-    text: string,
-    fillColor: string,
-    fontFamily: string,
-    fontWeight: string,
-    fontSize: number,
+    guid: string;
+    name: string;
+    text: string;
+    fillColor: string;
+    fontFamily: string;
+    fontWeight: string;
+    fontSize: number;
     isTextOnPath: boolean;
-    constraints: { [key: string]: any } | null,
-    placeholder: string,
-    backgroundColor: string
-}
+    constraints: { [key: string]: any } | null;
+    placeholder: string;
+    backgroundColor: string;
+  }
 
-   const [item, setItem] = useState<EditTextItem_1>({
-      guid: '',
-      name: '',
-      text: "",
-      fillColor: defaultColor,
-      fontFamily: fonts[0].name,
-      fontSize: 48,
-      fontWeight: 'normal normal',
-      isTextOnPath: false,
-      constraints: null,  
-      placeholder: 'Input your text here',
-      backgroundColor: 'rgb(235, 237, 242)'
-  })
-  
+  const [item, setItem] = useState<EditTextItem_1>({
+    guid: "",
+    name: "",
+    text: "",
+    fillColor: defaultColor,
+    fontFamily: fonts[0].name,
+    fontSize: 48,
+    fontWeight: "normal normal",
+    isTextOnPath: false,
+    constraints: null,
+    placeholder: "Input your text here",
+    backgroundColor: "rgb(235, 237, 242)",
+  });
+
   const customizerRef = useRef<any | null>(null);
   const [selectedCarouselSlide, setSelectedCarouselSlide] = useState<number>(0);
 
   const filteredAreas =
     product?.areas.filter((area) => isAreaVisible(area.id)) ?? [];
-    
+
   let finalVisibleAreas: ProductArea[] = [];
 
   const [moveElements, setMoveElements] = useState(false);
 
-  console.log(templates,'templates');
+  console.log(templates, "templates");
 
   const dynamicsVals = translations?.dynamics;
   const staticsVals = translations?.statics;
-  
+
   let translatedTemplates = templates.map((template) => {
     return { id: template.id, name: template.name, areas: template.areas };
   });
@@ -269,18 +268,16 @@ const DesignerSignature: FC<{
     areas: currentTemplate?.areas,
   };
 
-  
   let translatedAreas = filteredAreas.map((area) => {
     return { id: area.id, name: area.name };
   });
 
   filteredAreas.length > 0 &&
     filteredAreas.forEach((filteredArea) => {
-      
       let currentTemplateArea = currentTemplate!.areas.find(
         (x) => x.id === filteredArea.id
-        );
-    
+      );
+
       let itemsOfTheArea = items.filter(
         (item) => item.areaId === filteredArea.id
       );
@@ -300,10 +297,9 @@ const DesignerSignature: FC<{
         currentTemplateArea?.canAddText
       )
         finalVisibleAreas.push(filteredArea);
-    });    
+    });
 
-    // console.log(finalVisibleAreas,'total visible area');
-    
+  // console.log(finalVisibleAreas,'total visible area');
 
   const [actualAreaId, setActualAreaId] = useState<number>(
     finalVisibleAreas && finalVisibleAreas.length > 0
@@ -315,9 +311,8 @@ const DesignerSignature: FC<{
     (x) => x.id === actualAreaId
   );
 
-
   let itemsFiltered = items.filter((item) => item.areaId === actualAreaId);
-  
+
   const allStaticElements = !itemsFiltered.some((item) => {
     return (
       !item.constraints ||
@@ -349,15 +344,14 @@ const DesignerSignature: FC<{
   useEffect(() => {
     // if (finalVisibleAreas.length > 0 && actualAreaId === 0){
     //   setActualAreaId(finalVisibleAreas[0].id);
-    //   // console.log(finalVisibleAreas[0],'finalVisibleAreas');    
+    //   // console.log(finalVisibleAreas[0],'finalVisibleAreas');
     // }
 
-    if(selectedAreaID) setActualAreaId(selectedAreaID);
+    if (selectedAreaID) setActualAreaId(selectedAreaID);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [finalVisibleAreas]);
 
-  
   const isItemEditable = (item: Item, templateArea?: TemplateArea) => {
     if (!item.constraints) return false;
 
@@ -388,29 +382,26 @@ const DesignerSignature: FC<{
   };
 
   const handleAddTextClick = () => {
-
-    const itemText ={
-      guid: '',
-      name: '',
+    const itemText = {
+      guid: "",
+      name: "",
       text: `${dynamicsVals?.get("Enter Your Name")}`,
       fillColor: defaultColor,
       fontFamily: fonts[0].name,
       fontSize: 48,
-      fontWeight: 'normal normal',
+      fontWeight: "normal normal",
       isTextOnPath: false,
-      constraints: null,  
-      placeholder: 'Input your text here',
-      backgroundColor: 'rgb(235, 237, 242)'
-  }
+      constraints: null,
+      placeholder: "Input your text here",
+      backgroundColor: "rgb(235, 237, 242)",
+    };
     addItemText(itemText, actualAreaId);
   };
-
 
   const handleItemRemoved = (guid: string) => {
     removeItem(guid);
   };
 
- 
   const handleItemPropChange = (
     item: EditTextItem | EditImageItem,
     prop: string,
@@ -462,7 +453,7 @@ const DesignerSignature: FC<{
       </SingleValueContainer>
     );
   };
-  
+
   return (
     <>
       {!moveElements && (
@@ -499,7 +490,6 @@ const DesignerSignature: FC<{
               ))
            )}
           </DesignerContainerHeader> */}
-          
 
           {isMobile && translatedTemplates.length > 1 && (
             <SelectContainer>
@@ -508,7 +498,7 @@ const DesignerSignature: FC<{
                 styles={{
                   container: (base) => ({
                     ...base,
-                    minWidth: 300
+                    minWidth: 300,
                   }),
                 }}
                 isSearchable={false}
@@ -522,7 +512,7 @@ const DesignerSignature: FC<{
                   (x) => x.id === translatedCurrentTemplate.id
                 )}
                 onChange={(template: any) => {
-                  setTemplate(template.id)
+                  setTemplate(template.id);
                 }}
               />
             </SelectContainer>
@@ -530,7 +520,7 @@ const DesignerSignature: FC<{
           {isMobile && translatedAreas.length > 1 && (
             // <SelectContainer>
             //   {/* <span>{T._("Customizable Areas", "Composer")}</span> */}
-            //   <span>{dynamicVals?.get('Customizable Areas')}</span>              
+            //   <span>{dynamicVals?.get('Customizable Areas')}</span>
             //   <Select
             //     styles={{
             //       control: (base) => ({
@@ -560,7 +550,6 @@ const DesignerSignature: FC<{
               <Center>{"No customizable items"}</Center>
             )}
 
-
           {itemsFiltered.map((item) => {
             if (item.type === 0 && isItemEditable(item, currentTemplateArea))
               return (
@@ -569,22 +558,22 @@ const DesignerSignature: FC<{
                   handleItemPropChange={handleItemPropChange}
                   item={item as TextItem}
                 />
-              );            
+              );
             return null;
           })}
 
           {(showAddTextButton || showUploadButton) && (
             <UploadButtons>
-              <>  
-              {showAddTextButton && (
-                <Button_N isFullWidth onClick={handleAddTextClick}>
-                  <Icon>
-                    <Add />
-                  </Icon>
-                  <span>{staticsVals?.get('Text')}  </span>
-                </Button_N>
-              )}
-              </>              
+              <>
+                {showAddTextButton && (
+                  <Button_N isFullWidth onClick={handleAddTextClick}>
+                    <Icon>
+                      <Add />
+                    </Icon>
+                    <span>{staticsVals?.get("Text")} </span>
+                  </Button_N>
+                )}
+              </>
             </UploadButtons>
           )}
           {itemsFiltered.length > 0 && !allStaticElements && (
@@ -612,14 +601,22 @@ const DesignerSignature: FC<{
           isMobile={isMobile}
           className="zakeke-container"
         >
-         
-          <ZakekeDesigner ref={customizerRef} areaId={actualAreaId} />
-                   
-          <div style={{position: "absolute", top: "29px", width: "20%", height: "100%", right: "17px"}}>
-         <Button  isFullWidth primary onClick={() => setMoveElements(false)}>
-            <span>{"OK"} </span>
-          </Button>
-         </div>   
+          <div className="wrapper">
+            <ZakekeDesigner ref={customizerRef} areaId={actualAreaId} />
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              top: "29px",
+              width: "20%",
+              height: "100%",
+              right: "17px",
+            }}
+          >
+            <Button isFullWidth primary onClick={() => setMoveElements(false)}>
+              <span>{"X"} </span>
+            </Button>
+          </div>
         </ZakekeDesignerContainer>
       )}
     </>
