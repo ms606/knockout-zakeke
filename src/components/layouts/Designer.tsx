@@ -869,7 +869,9 @@ const Designer: FC<{
           className="zakeke-container"
         >
          
+         <div className="wrapper">
           <ZakekeDesigner ref={customizerRef} areaId={actualAreaId} />
+         </div>
          
           {/* <IconsAndDesignerContainer> */}
             {/* <ZoomIconIn hoverable onClick={() => customizerRef.current.zoomIn()}>
