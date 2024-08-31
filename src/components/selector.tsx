@@ -36,6 +36,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import PdfDialog from "./dialog/PdfDialog";
+import { useDialogManager } from "./dialog/Dialogs";
 
 const dialogsPortal = document.getElementById("dialogs-portal")!;
 
@@ -59,7 +61,10 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     getOnlineScreenshot,
     productCode,
     translations,
+    getPDF,
   } = useZakeke();
+
+  const { showDialog, closeDialog } = useDialogManager();
 
   const { setIsLoading, isMobile } = useStore();
 
@@ -113,6 +118,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   }
 
   const [width, setWidth] = useState(window.innerWidth);
+  // console.log(translations, "sss");
 
   const dynamicsVals = translations?.dynamics;
   const staticsVals = translations?.statics;
@@ -327,13 +333,15 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   const handleScreenShotClick = async () => {
     try {
       const url = await getOnlineScreenshot(800, 800);
-      // console.log(url.originalUrl);
       if (url) downloadImage(url.originalUrl);
 
       // setIsLoading(true);
       // setPdfIsLoading(true);
-      // const url = await getPDF();
-      // showDialog('pdf', <PdfDialog url={url} onCloseClick={() => closeDialog('pdf')} />);
+      // const url1 = await getPDF();
+      // showDialog(
+      //   "pdf",
+      //   <PdfDialog url={url1} onCloseClick={() => closeDialog("pdf")} />
+      // );
     } catch (ex) {
       console.error(ex);
       // showError(T._('Failed PDF generation', 'Composer'));
@@ -624,51 +632,59 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                     fitlerAttributes[0]?.name === "FLUORESCENT" ||
                     fitlerAttributes[0]?.name === "NORMAL" ||
                     fitlerAttributes[0]?.name === "MAT") || */
-                    fitlerAttributes[0]?.code === "OPTIUNI IMPRIMARE" && (
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-around",
-                          alignContent: "center",
-                        }}
-                      >
-                        <div className="mchead">
-                          {dynamicsVals?.get("Overlay type") ?? "Overlay type"}
-                        </div>
-                        <div className="infsel">
-                          <div className="custom-dropdown">
-                            <button
-                              className="custom-dropdown-button"
-                              onClick={() =>
-                                setIsCustomDropDownOpen(!isCustomDropDownOpen)
-                              }
-                            >
-                              {selectedOptionName}{" "}
-                              <span className="dropdown-arrow"> ▼</span>
-                            </button>
-                            {isCustomDropDownOpen && (
-                              <div className="custom-dropdown-list">
-                                {fitlerAttributes[0]?.options.map((option) => (
-                                  <div
-                                    key={option.id}
-                                    className="custom-dropdown-option"
-                                    onClick={() => {
-                                      selectOptionId(option.id);
-                                      selectOptionName(option.name);
-                                      setIsCustomDropDownOpen(
-                                        !isCustomDropDownOpen
-                                      );
-                                    }}
-                                  >
-                                    {option.name}
-                                  </div>
-                                ))}
-                              </div>
-                            )}
+                    fitlerAttributes[0]?.code === "OPTIUNI IMPRIMARE" ||
+                      fitlerAttributes[0]?.code === "ACOPERIRE TIP" ||
+                      (fitlerAttributes[0]?.code === "OVERLAY" && (
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-around",
+                            alignContent: "center",
+                          }}
+                        >
+                          <div className="mchead">
+                            {dynamicsVals?.get("Overlay type") ??
+                              "Overlay type"}
+                          </div>
+                          <div className="infsel">
+                            <div className="custom-dropdown">
+                              <button
+                                className="custom-dropdown-button"
+                                onClick={() =>
+                                  setIsCustomDropDownOpen(!isCustomDropDownOpen)
+                                }
+                              >
+                                {selectedOptionName}{" "}
+                                <span className="dropdown-arrow"> ▼</span>
+                              </button>
+                              {isCustomDropDownOpen && (
+                                <div className="custom-dropdown-list">
+                                  {fitlerAttributes[0]?.options.map(
+                                    (option) => (
+                                      <div
+                                        key={option.id}
+                                        className="custom-dropdown-option"
+                                        onClick={() => {
+                                          // if (option.selected) {
+                                            selectOption(option.id)
+                                            selectOptionId(option.id);
+                                            selectOptionName(option.name);
+                                         // }
+                                          setIsCustomDropDownOpen(
+                                            !isCustomDropDownOpen
+                                          );
+                                        }}
+                                      >
+                                        {option.name}
+                                      </div>
+                                    )
+                                  )}
+                                </div>
+                              )}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )
+                      ))
                   }
 
                   {(fitlerAttributes[0].name === "METALIZAT" ||
@@ -676,7 +692,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                     fitlerAttributes[0].name === "NORMAL" ||
                     fitlerAttributes[0].name === "MAT" ||
                     fitlerAttributes[0].name === "CULOARE") &&
-                    fitlerAttributes[0]?.code != "OPTIUNI IMPRIMARE" &&
+                    fitlerAttributes[0]?.code !== "OPTIUNI IMPRIMARE" &&
                     selectedStepName !== "KNOCK-X" && (
                       <List>
                         {!selectedTrayPreviewOpenButton &&
@@ -755,6 +771,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                       fitlerAttributes[0].name !== "NORMAL" &&
                       fitlerAttributes[0].name !== "MAT" &&
                       fitlerAttributes[0].name !== "OPTIUNI IMPRIMARE" &&
+                      fitlerAttributes[0].name !== "ACOPERIRE TIP" &&
                       fitlerAttributes[0].name !== "CULOARE") ||
                     selectedStepName === "KNOCK-X" ? (
                       <div>

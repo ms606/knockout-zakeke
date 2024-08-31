@@ -251,8 +251,6 @@ const DesignerSignature: FC<{
 
   const [moveElements, setMoveElements] = useState(false);
 
-  console.log(templates, "templates");
-
   const dynamicsVals = translations?.dynamics;
   const staticsVals = translations?.statics;
 
