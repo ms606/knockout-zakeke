@@ -99,6 +99,9 @@ const Tray: React.FC<TrayProps>
     toggleFunc("logos");
   };
 
+  console.log(dynamicsVals,'dynamicsVals');
+  
+
   return (
     <div
       style={{ transition: "all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1) 0s" }}

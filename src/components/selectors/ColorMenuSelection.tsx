@@ -14,7 +14,6 @@ export const ColorMenuSeleciton: React.FC<any> = ({
 	const staticsVals = translations?.statics; 
   const dynamicsVals  = translations?.dynamics;
 
-console.log(activeColorOption,fitlerAttributesName,'fitlerAttributesName');
 
   return (
     <div style={{ width: "100%" }}>

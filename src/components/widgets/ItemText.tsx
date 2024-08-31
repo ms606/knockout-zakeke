@@ -303,63 +303,62 @@ const ItemText: FC<{
           item={item}
         />
 
-        {/* {(!disableTextColors ||
-          !(disableTextColors && textColors.length === 1)) && (
-         <div style={{width: '21%'}}>
-          <FormControl label="">
-            <ColorsContainer>
-              {!disableTextColors && (
-                <ColorPickerContainer>
-                  <ColorPicker
-                    color={fillColor}
-                    onChange={(color) => {
-                      handleFillColorChange(color);
-                      setFillColor(color);
-                    }}
-                  />
-                </ColorPickerContainer>
-              )}
-
-              {!disableTextColors && (
-                <TextColorsContainer isDefaultPalette>
-                  {defaultColorsPalette.map((hex) => (
-                    <SinglePaletteItem
-                      key={hex}
-                      onClick={() => {
-                        handleItemPropChange(item, "font-color", hex);
-                        setFillColor(hex);
+{(!disableTextColors ||
+          !(disableTextColors && textColors.length === 1)) &&
+          !!item.constraints?.canChangeFontColor && (
+            <FormControl label="Color">
+              <ColorsContainer>
+                {!disableTextColors && (
+                  <ColorPickerContainer>
+                    <ColorPicker
+                      color={fillColor}
+                      onChange={(color) => {
+                        // handleFillColorChange(color);
+                        handleItemPropChange(item, "font-color", color);
+                        setFillColor(color);
                       }}
-                      selected={hex === fillColor}
-                      color={hex}
                     />
-                  ))}
-                </TextColorsContainer>
-              )} 
+                  </ColorPickerContainer>
+                )}
 
-              {disableTextColors && (
-                <TextColorsContainer>
-                  {textColors.map((textColor) => (
-                    <SinglePaletteItem
-                      key={textColor.colorCode}
-                      onClick={() => {
-                        handleItemPropChange(
-                          item,
-                          "font-color",
-                          textColor.colorCode
-                        );
-                        setFillColor(textColor.colorCode);
-                      }}
-                      selected={textColor.colorCode === fillColor}
-                      color={textColor.colorCode}
-                    />
-                  ))}
-                </TextColorsContainer>
-              )}
-            </ColorsContainer>
-          </FormControl>
+                {!disableTextColors && (
+                  <TextColorsContainer>
+                    {defaultColorsPalette.map((hex) => (
+                      <SinglePaletteItem
+                        key={hex}
+                        onClick={() => {
+                          handleItemPropChange(item, "font-color", hex);
+                          setFillColor(hex);
+                        }}
+                        selected={hex === fillColor}
+                        color={hex}
+                      />
+                    ))}
+                  </TextColorsContainer>
+                )}
 
-         </div> 
-        )} */}
+                {disableTextColors && (
+                  <TextColorsContainer>
+                    {textColors.map((textColor) => (
+                      <SinglePaletteItem
+                        key={textColor.colorCode}
+                        onClick={() => {
+                          handleItemPropChange(
+                            item,
+                            "font-color",
+                            textColor.colorCode
+                          );
+                          setFillColor(textColor.colorCode);
+                        }}
+                        selected={textColor.colorCode === fillColor}
+                        color={textColor.colorCode}
+                      />
+                    ))}
+                  </TextColorsContainer>
+                )}
+              </ColorsContainer>
+            </FormControl>
+          )}
       </ItemTextContainer>
     );
   else return null;
