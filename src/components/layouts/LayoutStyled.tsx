@@ -170,6 +170,19 @@ export const ZakekeDesignerContainer = styled.div<{ isMobile?: boolean }>`
     `}
 `;
 
+export const ZakekeDesignerContainer_button = styled.div<{isMobile: boolean}>`
+	// border: 1px solid #1387efbd;
+${(props) =>
+	props.isMobile &&
+	`position: absolute; 
+	 top: 29px;
+	 width: 18%; 
+	 height: 12%; 
+	 right: 17px;
+	
+`}	
+`;
+
 export const IconsAndDesignerContainer = styled.div`
 	position: absolute;
 	left: 0;

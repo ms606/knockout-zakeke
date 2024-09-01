@@ -51,6 +51,7 @@ import {
   ZakekeDesignerContainer,
   ZoomInIcon,
   ZoomOutIcon,
+  ZakekeDesignerContainer_button
 } from "./LayoutStyled";
 
 export type PropChangeHandler = (
@@ -598,6 +599,25 @@ const DesignerSignature: FC<{
         <ZakekeDesignerContainer
           isMobile={isMobile}
           className="zakeke-container"
+        >         
+          {/* <ZakekeDesigner ref={customizerRef} areaId={actualAreaId} />                    */}
+
+          <div className="wrapper" style={{height: "100%"}}>
+          <ZakekeDesigner ref={customizerRef} areaId={actualAreaId} />
+         </div>
+
+         <ZakekeDesignerContainer_button isMobile={isMobile}>
+          <Button  isFullWidth primary onClick={() => setMoveElements(false)}>
+            <span>{"X"} </span>
+          </Button>         
+         </ZakekeDesignerContainer_button>
+        </ZakekeDesignerContainer>
+      )}
+      
+      {/* {moveElements && (
+        <ZakekeDesignerContainer
+          isMobile={isMobile}
+          className="zakeke-container"
         >
           <div className="wrapper">
             <ZakekeDesigner ref={customizerRef} areaId={actualAreaId} />
@@ -616,7 +636,7 @@ const DesignerSignature: FC<{
             </Button>
           </div>
         </ZakekeDesignerContainer>
-      )}
+      )} */}
     </>
   );
 };

@@ -51,6 +51,7 @@ import {
   ZakekeDesignerContainer,
   ZoomInIcon,
   ZoomOutIcon,
+  ZakekeDesignerContainer_button
 } from "./LayoutStyled";
 
 export type PropChangeHandler = (
@@ -881,11 +882,14 @@ const Designer: FC<{
 							<SearchMinusSolid />
 						</ZoomIconOut> */}
           {/* </IconsAndDesignerContainer> */}
-         <div style={{position: "relative", top: "26px"}}>
+         {/* <div style={{position: "relative", top: "26px"}}> */}
+         <ZakekeDesignerContainer_button isMobile={isMobile}>
+
          <Button isFullWidth primary onClick={() => setMoveElements(false)}>
             <span>{"OK"} </span>
           </Button>
-         </div>   
+          </ZakekeDesignerContainer_button>
+         {/* </div>    */}
         </ZakekeDesignerContainer>
       )}
     </>
