@@ -176,7 +176,7 @@ ${(props) =>
 	props.isMobile &&
 	`position: absolute; 
 	 top: 29px;
-	 width: 18%; 
+	 width: 19%; 
 	 height: 12%; 
 	 right: 17px;
 	
