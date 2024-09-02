@@ -213,6 +213,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     groups.splice(indexToRemove, 1);
   }
 
+  console.log(fitlerAttributes[0],'fitlerAttributes[0]?');
+  
+
   useEffect(() => {
     const itemAvailable = items?.filter((item) => item.type === 0).length > 0;
 
