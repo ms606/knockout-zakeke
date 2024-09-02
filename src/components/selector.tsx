@@ -64,6 +64,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     getPDF,
   } = useZakeke();
 
+  console.log(groups,'gps');
+  
+
   const { showDialog, closeDialog } = useDialogManager();
 
   const { setIsLoading, isMobile } = useStore();
