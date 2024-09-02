@@ -647,8 +647,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                           }}
                         >
                           <div className="mchead">
-                            {dynamicsVals?.get("Overlay type") ??
-                              "Overlay type"}
+                            {dynamicsVals?.get("Overlay Type") ??
+                              "Overlay Type"}
                           </div>
                           <div className="infsel">
                             <div className="custom-dropdown">
