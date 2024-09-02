@@ -638,8 +638,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                     fitlerAttributes[0]?.name === "FLUORESCENT" ||
                     fitlerAttributes[0]?.name === "NORMAL" ||
                     fitlerAttributes[0]?.name === "MAT") || */
-                    fitlerAttributes[0]?.code === "OPTIUNI IMPRIMARE" ||
-                      fitlerAttributes[0]?.code === "ACOPERIRE TIP" && (
+                    fitlerAttributes[0]?.code === "OPTIUNI IMPRIMARE" && (
                         <div
                           style={{
                             display: "flex",
