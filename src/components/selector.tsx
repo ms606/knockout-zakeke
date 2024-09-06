@@ -64,9 +64,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     getPDF,
   } = useZakeke();
 
-  console.log(groups,'gps');
-  
-
   const { showDialog, closeDialog } = useDialogManager();
 
   const { setIsLoading, isMobile } = useStore();
@@ -213,7 +210,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     groups.splice(indexToRemove, 1);
   }
 
-  console.log(fitlerAttributes[0],'fitlerAttributes[0]?');
+  // console.log(fitlerAttributes[0],'fitlerAttributes[0]?');
   
 
   useEffect(() => {
@@ -252,8 +249,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
   // Open the first group and the first step when loaded
   useEffect(() => {
-    // console.log("loading in the first group",groups);
-
+    
     if (!selectedGroup && useActualGroups_.length > 0) {
       selectGroup(groups[0].id);
 
